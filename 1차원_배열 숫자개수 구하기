@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+	srand(time(NULL));
+	int a[10] = {0}; //자릿수나온 수 저장할 배열
+	int A = 0, B = 0, C = 0; //지역변수 선언 후 초기값.
+
+	A = (rand() % 900) + 100;
+	B = (rand() % 900) + 100;
+	C = (rand() % 900) + 100;
+	//랜덤으로 100부터 999까지의 숫자를 한개씩 할당해주기.
+
+	printf("각각 할당된 값은 A = %d B = %d C = %d\n", A, B, C);
+	//할당된값이 랜덤인지 확인해줄 프린트
+
+	int multi = A * B * C; //곱해준값 할당.
+	printf("%d\n", multi);
+	while (multi > 0)
+	{
+		a[multi % 10] += 1;
+		multi = multi / 10;
+	}
+
+	for (int i = 0; i < 10;i++)
+		printf("%d\n", a[i]);
+	return 0;
+}
