@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+	char a[80]{ };
+	int size = 0;
+	int count = 0;
+	int plus = 0;
+	scanf_s("%d", &size);
+
+	int* score;
+	score = (int*)malloc(sizeof(size) * size);
+	memset(score, 0, size * sizeof(size));
+
+	while(count <size)
+	{
+		scanf_s(" %s", a,80);
+		for (int t = 0;t < 80;t++)
+		{
+			if (a[t] == 'O')
+			{
+				plus++;
+				score[count] += plus;
+			}
+			else if (a[t] == 'X')
+				plus = 0;
+			else
+				break;
+		}
+		if (a[0] == 'O' or a[0] == 'X')
+			count++;
+		char a[80] = " ";
+		plus = 0;
+	}
+
+	for (int i = 0; i < size; i++)
+		printf("%d\n", score[i]);
+
+	free(score);
+	return 0;
+}
